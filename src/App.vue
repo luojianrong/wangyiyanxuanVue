@@ -1,28 +1,31 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <ele-footer v-if="$route.meta.isShow"></ele-footer>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import axios from 'axios'
+import FooterGuild from 'components/FooterGuild'
 
+const OK = 200;
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    'ele-footer':FooterGuild
   }
 }
+
+//rem适配
+;(()=>{
+  const styleNode = document.createElement('style');
+  const Ww = document.documentElement.clientWidth/10;
+  styleNode.innerHTML = `html{font-size:${Ww}px!important}`;
+  document.head.appendChild(styleNode);
+})();
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="stylus" rel="stylesheet/stylus" scoped>
+
 </style>
