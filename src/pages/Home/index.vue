@@ -11,16 +11,19 @@
           </div>
           <div class="loginBtn">登录</div>
         </div>
-        <div class="nav-tab">
-          <van-tabs class="nav" swipeable>
-            <van-tab title="推荐"/>
-            <van-tab class="item" title="美食酒水" />
-            <van-tab class="item" title="服饰鞋包"/>
-            <van-tab class="item" title="个性护理"/>
-            <van-tab class="item" title="全球特色"/>
-            <van-tab class="item" title="户外运动"/>
-          </van-tabs>
-          <div class="toggle" @click="show=!show">
+        <div class="guild">
+          <div class="nav" ref="navBar">
+            <div class="nav-tabs" >
+              <a class="item active" href="">推荐</a>
+              <a class="item" href="">居家生活</a>
+              <a class="item" href="">服饰鞋包</a>
+              <a class="item" href="">美食酒水</a>
+              <a class="item" href="">个护清洁</a>
+              <a class="item" href="">母婴亲子</a>
+              <a class="item" href="">运动旅行</a>
+            </div>
+          </div>
+          <div class="toggle">
             <i class="icon iconfont iconjiantou_down"></i>
           </div>
         </div>
@@ -364,7 +367,8 @@
   import Swiper from 'swiper'
   import 'swiper/css/swiper.min.css'
   import axios from 'axios'
-  import { Overlay,Swipe, SwipeItem,CountDown,Tab, Tabs } from 'vant'
+  import BetterScroll from 'better-scroll';
+  import { Overlay,Swipe, SwipeItem,CountDown,Tab,Tabs } from 'vant'
 
   const OK = 200
   export default {
@@ -381,8 +385,10 @@
         hotCategoryList:[],//热销榜
       }
     },
-    computed:{},
     async mounted(){
+      new BetterScroll(this.$refs.navBar,{
+        scrollX:true
+      });
       this.$nextTick(()=>{
         new Swiper(this.$refs.swipers, {
           loop: true, // 循环模式选项
@@ -411,7 +417,7 @@
       [CountDown.name]:CountDown,
       [Tab.name]:Tab,
       [Tabs.name]:Tabs,
-    }
+    },
   }
 </script>
 
@@ -426,7 +432,6 @@
     background url("url")
     background-size 100% 100%
     background-repeat no-repeat
-
   *
     margin 0
     padding 0
@@ -438,6 +443,7 @@
     /*头部样式*/
     .head-main
       height rem(148)
+      width 100%
       position fixed
       background-color #ffffff
       z-index 888
@@ -474,25 +480,40 @@
             border-radius .10667rem
             margin-left .21333rem
             font-size .32rem
-        .nav-tab
+        .guild
           display flex
-          height rem(30)
-          background-color #118060!important
           .nav
-            .item
-              width rem(140)
-              height rem(30)
-              background-color red
-            .toggle
-              width rem(100)
-              height rem(60)
-              text-align center
-              .icon
+            width rem(620)
+            height rem(62)
+            overflow hidden
+            background #fffff
+            .nav-tabs
+              height .72rem
+              width rem(1140)
+              padding-bottom .2rem
+              white-space nowrap
+              margin-left rem(10)
+              .item
                 display inline-block
-                width rem(60)
-                height rem(60)
-                font-size rem(45)
-                line-height rem(60)
+                height rem(62)
+                text-align center
+                line-height rem(62)
+                box-sizing border-box
+                font-size rem(28)
+                color #665455
+                margin 0 rem(30)
+                vertical-align middle
+                &.active
+                  color #B4282D
+                  border-bottom .06rem solid #B4282D
+          .toggle
+            width rem(80)
+            height rem(60)
+            margin-left rem(45)
+            text-align center
+          .icon
+            display inline-block
+            font-size rem(45)
     /*主体内容*/
     .contain
       padding-top rem(148)

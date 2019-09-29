@@ -14,7 +14,7 @@
               <a class="cart" href=""><i class="iconfont icongouwuche2"></i></a>
             </div>
           </header>
-          <div class="nav">
+          <div class="nav" ref="navBar">
             <div class="nav-tabs" >
               <a class="item active" href="">推荐</a>
               <a class="item" href="">好货内部价</a>
@@ -106,8 +106,14 @@
 </template>
 
 <script>
+  import BetterScroll from 'better-scroll';
   export default {
-    name: "Manage"
+    name: "Manage",
+    mounted(){
+      new BetterScroll(this.$refs.navBar,{
+        scrollX:true
+      });
+    }
   }
 </script>
 
@@ -148,7 +154,6 @@
               line-height rem(100)
               text-align center
               top 0
-              margin-left -1.6rem
               font-size .28rem
               color #7F7F7F
               z-index 1
@@ -179,18 +184,18 @@
           box-sizing border-box
           .nav-tabs
             height .72rem
-            width rem(2000)
+            width rem(1000)
             padding-bottom .2rem
             white-space nowrap
             .item
               display inline-block
               height rem(72)
+              text-align center
               line-height rem(72)
               box-sizing border-box
               font-size rem(28)
               color #7F7F7F
-              padding 0 .08rem
-              margin 0 rem(20)
+              margin 0 rem(30)
               vertical-align middle
               &.active
                 color #B4282D
@@ -199,6 +204,7 @@
       width 100%
       overflow hidden
       padding-top rem(162)
+      padding-bottom rem(100)
       .content-main
         background-color #F2F5F4
         .item

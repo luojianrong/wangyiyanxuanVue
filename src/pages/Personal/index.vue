@@ -16,7 +16,7 @@
             <img src="//yanxuan.nosdn.127.net/bd139d2c42205f749cd4ab78fa3d6c60.png" alt="">
           </div>
           <div class="text">
-            <p class="login-phone"><i class="icon iconfont iconshouji"></i>手机号快速登录</p>
+            <p class="login-phone"><i class="icon iconfont iconshouji"  @click="$router.replace('/Login')"></i>手机号快速登录</p>
             <p class="login-email"><i class="icon email iconfont iconyouxiang"></i>邮箱账号登录</p>
           </div>
         </div>
@@ -66,12 +66,12 @@
           height rem(88)
           background-color #ffffff
           display flex
-          justify-content space-around
           align-items center
+          margin-left rem(20)
           .title
             font-size .48rem
             float right
-            margin-left rem(140)
+            margin-left rem(230)
           i
             font-size rem(50)
           .right
@@ -80,7 +80,7 @@
             align-items center
             justify-content space-around
             float: right;
-            margin-left rem(160)
+            margin-left rem(140)
             a
               display inline-block
         .content

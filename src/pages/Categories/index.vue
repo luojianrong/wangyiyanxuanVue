@@ -10,7 +10,7 @@
         </div>
       </div>
       <div class="cateContainer">
-        <div class="left-list">
+        <div class="left-list" ref="leftList">
           <ul class="list">
             <li class="item"
                 v-for="category in categoryL1List"
@@ -28,6 +28,7 @@
 </template>
 <script>
   import CtergoryList from 'components/CtergoryList/CtargoryList.vue'
+  import BScroll from 'better-scroll'
   import axios from 'axios';
   const OK = 200;
   export default {
@@ -47,12 +48,15 @@
         this.currentCategory = data.currentCategory.subCateList;
         this.categoryL1List = data.categoryL1List;
       }
+
+      new BScroll(this.$refs.leftList)
     },
     methods:{
       //点击左侧分类列表，接收index，更改当前的index并获取对应的子分类，更新右侧的分类数据
       getCategory(index){
         this.index = index;
-
+       const cate = this.categoryL1List.filter((item)=> item.showIndex === index )
+        this.currentCategory = cate[0].subCateList;
       }
     },
     components:{
